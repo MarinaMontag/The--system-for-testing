@@ -1,0 +1,15 @@
+if (this.role === undefined) {
+      // @ts-ignore
+      const decodeRole = jwtDecode(localStorage.getItem('token')).sub;
+      if (decodeRole === 'STUDENT') {
+        this.role = Role.Student;
+        console.log(this.role);
+      }
+      else if (decodeRole === 'TUTOR') {
+        this.role = Role.Tutor;
+        console.log(this.role);
+        }
+      else
+        {
+          this.router.navigate(['/login']); }
+       }

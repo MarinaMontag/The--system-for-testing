@@ -1,0 +1,18 @@
+<div class="row mt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0 text-center">
+      <div class="card-header">
+        <h3 class="mb-0">Test result</h3>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{testName}}</h5>
+        <p class="card-text">You have answered {{result}} of {{maxResult}} questions correctly</p>
+          <button type="button" class="btn btn-info mr-3"
+                  (click)="repassTest()">Pass test one more time</button>
+        <button type="button" class="btn btn-secondary"
+                (click)="goBackToTests()">Back to tests</button>
+      </div>
+    </div>
+  </div>
+</div>
+

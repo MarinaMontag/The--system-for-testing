@@ -1,0 +1,17 @@
+
+<div class="row mt-5">
+  <div class="col-xl-6 mb-3" *ngFor="let subject of subjects">
+    <div class="card text-center"
+         [class.algebra]="subject.name==='Algebra'"
+         [class.geometry]="subject.name==='Geometry'"
+         [class.biology]="subject.name==='Biology'"
+         [class.geography]="subject.name==='Geography'"
+         [class.physics]="subject.name==='Physics'"
+         [class.chemistry]="subject.name==='Chemistry'">
+      <div class="card-body">
+        <a routerLink="/subject/{{subject.id}}" class="btn btn-primary">{{subject.name}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+

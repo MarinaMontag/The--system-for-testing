@@ -1,0 +1,81 @@
+<div class="row pt-3">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header" *ngIf="enterTestInfo">
+        <h3 class="mb-0">Create your own test</h3>
+      </div>
+      <div class="card-body" *ngIf="enterTestInfo">
+        <form [formGroup]="testInfoForm">
+          <div class="form-group">
+            <label>
+              <h5>Test name:</h5>
+            </label>
+            <input type="text" class="form-control rounded-0" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label>
+              <h6>Description:</h6>
+            </label>
+            <input type="text" class="form-control rounded-0" formControlName="description">
+          </div>
+          <div class="form-group d-flex justify-content-between">
+            <button type="button" class="btn btn-info" (click)="addQuestions()">
+              Next</button>
+            <button type="button" class="btn btn-dark" (click)="cancel()">
+              Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-header" *ngIf="enterQuestions">
+        <h3 class="mb-0">Questions and answers</h3>
+      </div>
+      <div class="card-body" *ngIf="enterQuestions">
+        <form [formGroup]="questionForm">
+          <div class="form-group">
+            <label>
+              <h5>Question {{test.questions.length+1}}:</h5>
+            </label>
+            <input type="text" class="form-control rounded-0" formControlName="question">
+          </div>
+          <div class="form-group">
+              <label>
+                <h3>Answers</h3>
+              </label>
+          </div>
+          <div class="form-group">
+            <div formArrayName="answers">
+              <div *ngFor="let answer of answers.controls; let i=index">
+                <label>
+                  <h6>Answer {{i+1}}:</h6>
+                </label>
+                <input type="text" class="form-control rounded-0" [formControlName]="i">
+              </div>
+            </div>
+          </div>
+          <div  class="form-group">
+            <button type="button" class="btn btn-info" (click)="addAnswer()">
+              Add answer
+            </button>
+          </div>
+          <div class="form-group">
+            <label>
+              <h6>Number of correct answer</h6>
+            </label>
+            <input type="number" min="1" max="{{answers.length}}" class="form-control rounded-0"
+                   formControlName="indexOfCorrectAnswer">
+          </div>
+          <div class="form-group d-flex justify-content-between">
+            <button type="button" class="btn btn-info" (click)="addQuestion()">
+              Add question</button>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-success" (click)="save()">
+                Save</button>
+            <button type="button" class="btn btn-dark ml-2" (click)="cancel()">
+              Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
